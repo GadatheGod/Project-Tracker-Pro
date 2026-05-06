@@ -516,9 +516,10 @@ class ProjectTrackerApp:
             count = status_counts.get(status, 0)
             if count > 0:
                 angle = count / total * 360
-                self.workload_canvas.create_wedge(
+                self.workload_canvas.create_arc(
                     (cx - r, cy - r), (cx + r, cy + r),
-                    start=start_angle, extent=angle, fill=color, outline="white", width=2)
+                    start=start_angle - 90, extent=angle, fill=color, outline="white",
+                    width=2, style=tk.PIESLICE)
                 mid = start_angle + angle / 2
                 label_r = r // 2
                 lx = cx + label_r * math.cos(math.radians(mid - 90))
